@@ -12,14 +12,13 @@ public class DynamicArrayDemo {
         dynamicArray.add(7);
         dynamicArray.add(74);
         dynamicArray.add(92);
-        dynamicArray.add(92);
-        dynamicArray.add(92);
-        dynamicArray.add(92);
-        dynamicArray.add(92);
-        dynamicArray.add(92);
-
-
+        dynamicArray.set(2,55);
+        dynamicArray.add(1,15);
+        System.out.println(dynamicArray.getIndexByValue(7));
+        System.out.println(dynamicArray.exists(74));
+//        dynamicArray.deleteByIndex(2);
         dynamicArray.print();
-        System.out.println(dynamicArray.getByIndex(6));
+
+
     }
 }

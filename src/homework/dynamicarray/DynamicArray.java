@@ -1,9 +1,5 @@
 package homework.dynamicarray;
 
-
-import java.lang.reflect.Array;
-import java.util.Arrays;
-
 public class DynamicArray {
 
     private int[] array;
@@ -21,12 +17,45 @@ public class DynamicArray {
         array[size++] = value;
     }
 
+    public void add(int index, int value) {
+        if (size == array.length) {
+            extend();
+        }
+        if (index != -1 && index < size) {
+            for (int i = size; i > index; i--) {
+                array[i] = array[i - 1];
+            }
+            array[index] = value;
+            size++;
+        } else {
+            System.out.println("Wrong index");
+        }
+    }
+
+
+    public void set(int index, int value) {
+        if (index != -1 && index < size) {
+            array[index] = value;
+        } else {
+            System.out.println("Wrong index");
+        }
+    }
+
+    public void deleteByIndex(int index) {
+        if (index != -1 && index < size) {
+            for (int i = index; i < size; i++) {
+                array[i] = array[i + 1];
+            }
+            size--;
+        } else {
+            System.out.println("Wrong index");
+        }
+    }
+
+
     private void extend() {
         int[] temp = new int[array.length + 10];
-//        for (int i = 0; i < size; i++) {
-//            temp[i] = array[i];
-//        }
-        System.arraycopy(array ,0,temp ,0, size);
+        System.arraycopy(array, 0, temp, 0, size);
         array = temp;
     }
 
@@ -36,6 +65,25 @@ public class DynamicArray {
         } else {
             return -1;
         }
+    }
+
+    public boolean exists(int value) {
+        for (int i : array) {
+            if (i == value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int getIndexByValue(int value) {
+        for (int i = 0; i < size; i++) {
+            if (array[i] == value){
+                return i;
+            }
+
+        }
+        return -1;
     }
 
     public void print() {
