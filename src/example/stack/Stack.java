@@ -2,26 +2,24 @@ package example.stack;
 
 public class Stack {
 
-    int[] stck = new int[10];
+    char[] stck = new char[10];
     int tos;
 
-    Stack() {
+    public Stack() {
         int i = tos - 1;
     }
 
-    void push(int intem) {
+    public void push(char item) {
         if (tos == 9) {
-            System.out.println("стек заполнен");
         } else {
-            stck[++tos] = intem;
+            stck[++tos] = item;
         }
     }
 
-    int pop() {
+    public char pop() {
         if (tos < 0) {
-            System.out.println("стек не загружен");
             return 0;
-        }else {
+        } else {
             return stck[tos--];
         }
 
