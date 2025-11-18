@@ -1,4 +1,4 @@
-package example;
+package example.examples;
 
 public class Switch {
     static void main(String[] args) {

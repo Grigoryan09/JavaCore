@@ -1,4 +1,4 @@
-package example;
+package example.examples;
 
 public class For_each {
     static void main() {

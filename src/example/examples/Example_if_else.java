@@ -1,4 +1,4 @@
-package example;
+package example.examples;
 
 public class Example_if_else {
     static void main(String[] args) {

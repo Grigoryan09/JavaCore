@@ -5,7 +5,7 @@ public class TestSteck {
 
         Stack mystack = new Stack();
 
-        for (int i = 0; i < 10; i++) {
+        for (char i = 0; i < 10; i++) {
             mystack.push(i);
         }
         System.out.println(mystack.pop());
