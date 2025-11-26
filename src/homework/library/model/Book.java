@@ -1,4 +1,4 @@
-package homework.library;
+package homework.library.model;
 
 import java.util.Objects;
 
@@ -6,18 +6,15 @@ public class Book {
 
     private int id;
     private String title;
-    private String authorName;
+    private Author author;
     private double price;
     private int quantity;
 
-    public Book(String title, String authorName, double price, int quantity) {
+    public Book(String title, Author author, double price, int quantity) {
         this.title = title;
-        this.authorName = authorName;
+        this.author = author;
         this.price = price;
         this.quantity = quantity;
-    }
-
-    public Book() {
     }
 
     public int getId() {
@@ -36,12 +33,12 @@ public class Book {
         this.title = title;
     }
 
-    public String getAuthorName() {
-        return authorName;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     public double getPrice() {
@@ -64,12 +61,12 @@ public class Book {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return id == book.id && Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(title, book.title) && Objects.equals(authorName, book.authorName);
+        return id == book.id && Double.compare(price, book.price) == 0 && quantity == book.quantity && Objects.equals(title, book.title) && Objects.equals(author, book.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, authorName, price, quantity);
+        return Objects.hash(id, title, author, price, quantity);
     }
 
     @Override
@@ -77,7 +74,7 @@ public class Book {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", authorName='" + authorName + '\'' +
+                ", author=" + author +
                 ", price=" + price +
                 ", quantity=" + quantity +
                 '}';

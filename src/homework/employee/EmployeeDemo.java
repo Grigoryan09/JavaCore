@@ -36,9 +36,23 @@ public class EmployeeDemo implements Commands {
                 case SEARCH_EMPLOYEE_BY_COMPANY_NAME:
                     searchByCompany();
                     break;
+                case SEARCH_EMPLOYEES_BY_POSITION_LEVEL:
+                    searchByPositonLevel();
+                    break;
                 default:
                     System.out.println("Invalid command!");
             }
+        }
+    }
+
+    private static void searchByPositonLevel() {
+        Commands.printPositionLevelMenu();
+        String position = scanner.nextLine();
+        try {
+            PositionLevel level = PositionLevel.fromCode(position);
+            storage.searchEmployeeByPositionLevel(level);
+        } catch (PositionNotFoundException e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -47,15 +61,15 @@ public class EmployeeDemo implements Commands {
         String name = scanner.nextLine();
         System.out.print("Surname: ");
         String surname = scanner.nextLine();
-        String id = IDGenerator.generateID();
-        System.out.println("Generated Employee ID: " + id);
         System.out.print("Salary: ");
         double salary = Double.parseDouble(scanner.nextLine());
         System.out.print("Company: ");
         String company = scanner.nextLine();
-        System.out.print("Position: ");
-        String position = scanner.nextLine();
-        Employee employee = new Employee(name, surname, id, salary, company, position);
+        System.out.println("Position Level: ");
+        Commands.printPositionLevelMenu();
+        String levelStr = scanner.nextLine();
+        PositionLevel level = PositionLevel.fromCode(levelStr);
+        Employee employee = new Employee(name, surname, salary, company,level);
         storage.add(employee);
         System.out.println("Employee added!");
     }

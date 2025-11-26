@@ -1,5 +1,6 @@
 package homework.employee.storage;
 
+import homework.employee.PositionLevel;
 import homework.employee.model.Employee;
 
 public class EmployeeStorage {
@@ -7,12 +8,18 @@ public class EmployeeStorage {
 
     private Employee[] employees = new Employee[10];
     private int size = 0;
+    private int id = 1;
 
     public void add(Employee employee) {
         if (size == employees.length) {
             extend();
         }
+        employee.setEmployeeID(generateId(id++));
         employees[size++] = employee;
+    }
+
+    private String generateId(int id){
+        return String.format("A%04d", id);
     }
 
     private void extend() {
@@ -34,6 +41,18 @@ public class EmployeeStorage {
             }
         }
         return null;
+    }
+
+    public void searchEmployeeByPositionLevel(PositionLevel positionLevel) {
+        if (size != -1) {
+            for (int i = 0; i < size; i++) {
+                if (employees[i].getLevel().equals(positionLevel)) {
+                    System.out.println(employees[i]);
+                }
+            }
+        } else {
+            System.out.println("No employee added");
+        }
     }
 
     public void printByCompany(String company) {
